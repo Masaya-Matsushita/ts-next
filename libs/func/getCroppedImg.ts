@@ -50,7 +50,10 @@ export default async function getCroppedImg(
   // 抽出した画像データをcanvasの左隅に貼り付け
   ctx.putImageData(data, 0, 0)
 
-  // canvasを画像に変換
+  // canvasを画像(Base64)に変換する場合
+  // return canvas.toDataURL('image/jpeg')
+
+  // canvasを画像(Blob)に変換
   return new Promise((resolve, reject) => {
     canvas.toBlob((file) => {
       if (file !== null) resolve(URL.createObjectURL(file))
